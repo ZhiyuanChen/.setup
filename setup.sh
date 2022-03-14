@@ -1,4 +1,4 @@
-sudo apt-get install curl git steam tmux vim wget zsh chromium-browser -y
+sudo apt-get install curl git steam tmux neovim wget zsh chromium-browser -y
 
 # setup touchpad
 sudo add-apt-repository ppa:touchegg/stable -y
@@ -12,6 +12,18 @@ flatpak install https://dl.flathub.org/repo/appstream/com.github.joseexposito.to
 sudo apt install fcitx-bin fcitx-googlepinyin -y
 sudo apt install fcitx-ui-qimpanel -y
 
+# setup yarn
+sudo apt remove cmdtest yarn -y
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt-get install yarn -y
+
+# setup vim
+sudo add-apt-repository ppa:neovim-ppa/unstable -y
+sudo apt instlal neovim -y
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y
+
 # setup enpass
 sudo echo "deb https://apt.enpass.io/ stable main" > /etc/apt/sources.list.d/enpass.list
 sudo wget -O - https://apt.enpass.io/keys/enpass-linux.key | tee /etc/apt/trusted.gpg.d/enpass.asc
@@ -24,14 +36,13 @@ sudo wget -qO - https://download.opensuse.org/repositories/home:/npreining:/debi
 sudo apt update
 sudo apt install onedrive -y
 
-# setup Oh My Zsh
-curl -L git.io/antigen > /usr/share/zsh/antigen.zsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-cp .zshrc ~/
-
 # setup vsc
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
 sudo apt install code-insiders
 
+# setup Oh My Zsh
+curl -L git.io/antigen > /usr/share/zsh/antigen.zsh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+cp .zshrc ~/
 
