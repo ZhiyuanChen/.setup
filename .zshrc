@@ -32,5 +32,6 @@ eval $(thefuck --alias)
 
 # some nice command I find useful
 function mbp() { mv "$@" ~/.bkup; }
-function pdf() { pdftotext $@ - | less ; }
+function lesspdf() { pdftotext $@ - | less; }
+function vimdiff() { vim -d $@; }
 
