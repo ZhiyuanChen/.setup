@@ -8,6 +8,9 @@ sudo apt install touchegg -y
 sudo apt install flatpak -y
 flatpak install https://dl.flathub.org/repo/appstream/com.github.joseexposito.touche.flatpakref -y
 
+# setup GPU
+sudo apt install nvidia-driver-510 -y
+
 # setup pinyin
 sudo apt install fcitx-bin fcitx-googlepinyin -y
 sudo apt install fcitx-ui-qimpanel -y
