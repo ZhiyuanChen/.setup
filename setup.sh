@@ -25,4 +25,7 @@ sudo apt update
 sudo apt install onedrive -y
 
 # setup Oh My Zsh
+curl -L git.io/antigen > /usr/share/zsh/antigen.zsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+cp .zshrc ~/
+

@@ -25,3 +25,5 @@ antigen bundle zsh-users/zsh-wakatime
 
 antigen apply
 
+eval $(thefuck --alias)
+
