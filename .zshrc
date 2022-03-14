@@ -27,5 +27,10 @@ antigen apply
 
 export PATH="/home/$(whoami)/.local/bin/:$PATH"
 alias vim=lvim
+
 eval $(thefuck --alias)
+
+# some nice command I find useful
+function mbp() { mv "$@" ~/.bkup; }
+function pdf() { pdftotext $@ - | less ; }
 
