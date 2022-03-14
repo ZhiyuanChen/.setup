@@ -24,7 +24,7 @@ sudo apt-get install yarn -y
 
 # setup vim
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
-sudo apt instlal neovim -y
+sudo apt install neovim -y
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y
 
 # setup enpass
@@ -45,7 +45,7 @@ sudo apt update
 sudo apt install code-insiders
 
 # setup Oh My Zsh
-curl -L git.io/antigen > /usr/share/zsh/antigen.zsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sudo curl -L git.io/antigen > /usr/share/zsh/antigen.zsh
+sudo sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 cp .zshrc ~/
 
