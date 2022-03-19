@@ -14,42 +14,22 @@ sudo apt update
 sudo apt install nvidia-driver-510 -y
 
 # setup pinyin
-sudo apt install fcitx-bin fcitx-googlepinyin -y
-sudo apt install fcitx-ui-qimpanel -y
+sh setup.d/pinyin.sh
 
-# setup yarn
-sudo apt remove cmdtest yarn -y
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update
-sudo apt install yarn -y
-
-# setup vim
-sudo add-apt-repository ppa:neovim-ppa/unstable -y
-sudo apt update
-sudo apt install neovim -y
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y
+# stup vim
+sh setup.d/vim.sh
 
 # setup enpass
-sudo echo "deb https://apt.enpass.io/ stable main" > /etc/apt/sources.list.d/enpass.list
-sudo wget -O - https://apt.enpass.io/keys/enpass-linux.key | tee /etc/apt/trusted.gpg.d/enpass.asc
-sudo apt update
-sudo apt install enpass -y
+sh setup.d/enpass.sh
 
 # setup OneDrive
-sudo echo 'deb https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_20.04/ ./' | sudo tee /etc/apt/sources.list.d/onedrive.list
-sudo wget -qO - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_20.04/Release.key | sudo apt-key add -
-sudo apt update
-sudo apt install onedrive -y
+sh setup.d/onedrive.sh
 
 # setup vsc
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt update
-sudo apt install code-insiders
+sh setup.d/vsc.sh
+
+# setup font
+sh setup.d/font.sh
 
 # setup Oh My Zsh
-curl -L git.io/antigen > antigen.zsh
-sudo mv antigen.zsh /usr/share/zsh/antigen.zsh
-sudo sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-cp .zshrc ~/
-
+sh setup.d/zsh.sh
