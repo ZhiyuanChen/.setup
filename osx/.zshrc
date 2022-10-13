@@ -18,7 +18,6 @@ antigen bundle thefuck
 antigen bundle tmux
 antigen bundle web-search
 antigen bundle z
-antigen bundle sobolevn/wakatime-zsh-plugin
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
