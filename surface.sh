@@ -13,23 +13,27 @@ sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo apt update
 sudo apt install nvidia-driver-510 -y
 
-# setup pinyin
-sh setup.d/pinyin.sh
+# setup conda
+sh conda.sh
 
 # stup vim
-sh setup.d/vim.sh
-
-# setup enpass
-sh setup.d/enpass.sh
-
-# setup OneDrive
-sh setup.d/onedrive.sh
+sh vim.sh
 
 # setup vsc
-sh setup.d/vsc.sh
+sh vsc.sh
 
 # setup font
-sh setup.d/font.sh
+sh ../general/font.sh
 
 # setup Oh My Zsh
-sh setup.d/zsh.sh
+sh ../general/zsh.sh
+
+# setup pinyin
+sh pinyin.sh
+
+# setup enpass
+sh enpass.sh
+
+# setup OneDrive
+sh onedrive.sh
+
