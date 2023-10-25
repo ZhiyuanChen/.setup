@@ -24,7 +24,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
 
-export PATH="/home/$(whoami)/.local/bin/:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
 alias vim=lvim
 
 eval $(thefuck --alias)
