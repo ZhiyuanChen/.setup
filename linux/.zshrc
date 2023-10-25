@@ -1,4 +1,5 @@
-source /usr/share/zsh/antigen.zsh
+
+source "${ANTIGEN:-/usr/share/zsh/antigen.zsh}"
 
 antigen use oh-my-zsh
 antigen theme romkatv/powerlevel10k
