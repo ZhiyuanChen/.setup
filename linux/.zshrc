@@ -26,12 +26,15 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 export PATH="$HOME/.local/bin/:$PATH"
-alias vim=lvim
+if type -t lvim &> /dev/null; then
+    alias vim=lvim
+fi
 
-eval $(thefuck --alias)
+if type -t thefuck &> /dev/null; then
+    eval $(thefuck --alias)
+fi
 
 # some nice command I find useful
 function mbp() { mv "$@" ~/.bkup; }
 function lesspdf() { pdftotext $@ - | less; }
 function vimdiff() { vim -d $@; }
-
