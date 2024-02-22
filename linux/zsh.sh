@@ -1,4 +1,4 @@
 # setup Oh My Zsh
-sudo curl -L git.io/antigen-nightly > antigen.zsh
-sudo mv antigen.zsh /usr/share/zsh/antigen.zsh
-cp .zshrc ~/
+curl -L git.io/antigen-nightly > /usr/share/zsh/antigen.zsh
+cp "$(dirname "${BASH_SOURCE[0]}")/.zshrc" ~/
+chsh -s $(which zsh)
