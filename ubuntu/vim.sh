@@ -1,7 +1,8 @@
 # setup cargo (rust) and yarn (nodejs)
 # curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-apt install -y nodejs cargo
+apt install -y software-properties-common nodejs
 npm install -y yarn
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # setup vim
 add-apt-repository ppa:neovim-ppa/unstable -y && apt update
