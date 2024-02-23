@@ -9,6 +9,3 @@ add-apt-repository ppa:neovim-ppa/unstable -y && apt update
 apt install neovim -y
 /bin/bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y
 
-# install ranger
-apt install ranger -y
-
