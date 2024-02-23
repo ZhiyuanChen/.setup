@@ -5,7 +5,7 @@ git_root=$(dirname "${BASH_SOURCE[0]}")
 echo "The root of the Git repo is: $git_root"
 
 # Install dependencies
-apt install curl git tmux wget zsh -y
+/bin/bash $git_root/ubuntu/utils.sh
 
 # stup vim
 /bin/bash $git_root/ubuntu/vim.sh
