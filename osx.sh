@@ -46,5 +46,6 @@ brew update
 
 # Configure shell, fonts, and conda.
 /bin/bash "$repo_root/osx/zsh.sh"
+/bin/bash "$repo_root/general/tmux.sh"
 /bin/bash "$repo_root/osx/font.sh"
 /bin/bash "$repo_root/osx/conda.sh"

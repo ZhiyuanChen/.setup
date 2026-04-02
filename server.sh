@@ -12,3 +12,6 @@ echo "Using setup repo at: $repo_root"
 
 # Configure zsh for Linux hosts.
 /bin/bash "$repo_root/linux/zsh.sh"
+
+# Configure tmux.
+/bin/bash "$repo_root/general/tmux.sh"
