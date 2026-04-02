@@ -1,5 +1,9 @@
-# setup fcitx
-sudo apt install fcitx-bin fcitx-googlepinyin -y
-sudo apt remove fcitx-ui-classic -y
-sudo apt install fcitx-ui-qimpanel -y
+#!/usr/bin/env bash
+set -euo pipefail
 
+# Use the current Fcitx 5 stack for Chinese input on Ubuntu.
+sudo apt-get install -y fcitx5 fcitx5-chinese-addons fcitx5-config-qt im-config
+
+if command -v im-config >/dev/null 2>&1; then
+  im-config -n fcitx5 || true
+fi

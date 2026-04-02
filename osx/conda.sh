@@ -1,4 +1,6 @@
-brew install wget
-wget https://repo.anaconda.com/archive/Anaconda3-2022.05-MacOSX-arm64.sh -O conda.sh
-sudo /bin/bash conda.sh -b -p /opt/conda
+#!/usr/bin/env bash
+set -euo pipefail
 
+repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+
+/bin/bash "$repo_root/general/install-conda.sh"

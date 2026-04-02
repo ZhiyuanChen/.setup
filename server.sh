@@ -1,14 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Now you can use the get_git_root function
-git_root=$(dirname "${BASH_SOURCE[0]}")
-echo "The root of the Git repo is: $git_root"
+repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+echo "Using setup repo at: $repo_root"
 
-# Install dependencies
-/bin/bash $git_root/ubuntu/utils.sh
+# Install base dependencies.
+/bin/bash "$repo_root/ubuntu/utils.sh"
 
-# stup vim
-/bin/bash $git_root/ubuntu/vim.sh
+# Install Neovim and AstroNvim.
+/bin/bash "$repo_root/ubuntu/vim.sh"
 
-# setup Oh My Zsh
-/bin/bash $git_root/linux/zsh.sh
+# Configure zsh for Linux hosts.
+/bin/bash "$repo_root/linux/zsh.sh"

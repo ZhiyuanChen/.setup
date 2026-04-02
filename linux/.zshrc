@@ -1,39 +1,20 @@
-source "${ANTIGEN:-/usr/share/zsh/antigen.zsh}"
+antidote_root="${ANTIDOTE_HOME:-${ZDOTDIR:-$HOME}/.antidote}"
+zsh_plugins_base="${ZDOTDIR:-$HOME}/.zsh_plugins"
+zsh_plugins_txt="${zsh_plugins_base}.txt"
+zsh_plugins_static="${zsh_plugins_base}.zsh"
 
-antigen use oh-my-zsh
-antigen theme romkatv/powerlevel10k
-
-antigen bundle catimg
-antigen bundle command-not-found
-antigen bundle cp
-antigen bundle git
-antigen bundle gitfast
-antigen bundle github
-antigen bundle history
-antigen bundle pip
-antigen bundle please
-antigen bundle python
-antigen bundle ssh-agent
-antigen bundle thefuck
-antigen bundle tmux
-antigen bundle web-search
-antigen bundle z
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen apply
-
-export PATH="$HOME/.local/bin/:$PATH"
-if type -t lvim &> /dev/null; then
-    alias vim=lvim
+if [[ -f "${antidote_root}/antidote.zsh" && -f "${zsh_plugins_txt}" ]]; then
+    if [[ ! -f "${zsh_plugins_static}" || "${zsh_plugins_txt}" -nt "${zsh_plugins_static}" || "${antidote_root}/antidote.zsh" -nt "${zsh_plugins_static}" ]]; then
+        (
+            source "${antidote_root}/antidote.zsh"
+            antidote bundle <"${zsh_plugins_txt}" >|"${zsh_plugins_static}"
+        )
+    fi
+    source "${zsh_plugins_static}"
 fi
 
-if type -t thefuck &> /dev/null; then
-    eval $(thefuck --alias)
-fi
+export PATH="$HOME/.local/bin:$PATH"
 
-# some nice command I find useful
-function mbp() { mv "$@" ~/.bkup; }
-function lesspdf() { pdftotext $@ - | less; }
-function vimdiff() { vim -d $@; }
+if (( $+commands[nvim] )); then
+    alias vim=nvim
+fi

@@ -1,6 +1,17 @@
-# setup cargo (rust) and yarn (nodejs)
-brew install rust yarn
+#!/usr/bin/env bash
+set -euo pipefail
 
-# setup vim
+repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+
+# Setup cargo (rust) and Node.js tooling for Neovim plugins.
+brew install rust node
+if command -v corepack >/dev/null 2>&1; then
+  corepack enable
+else
+  npm install --global corepack
+  corepack enable
+fi
+
+# Install Neovim and AstroNvim.
 brew install neovim
-/bin/bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y
+/bin/bash "$repo_root/general/nvim.sh"

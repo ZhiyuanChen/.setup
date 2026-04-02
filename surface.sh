@@ -1,39 +1,38 @@
-sudo apt-get install curl git steam tmux neovim wget zsh chromium-browser -y
+#!/usr/bin/env bash
+set -euo pipefail
 
-# setup touchpad
+repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+
+# Start from the shared server baseline.
+/bin/bash "$repo_root/server.sh"
+
+sudo apt-get install -y steam chromium-browser flatpak ubuntu-drivers-common
+
+# Setup touchpad gesture support.
 sudo add-apt-repository ppa:touchegg/stable -y
-sudo apt update
-sudo apt install touchegg -y
+sudo apt-get update
+sudo apt-get install -y touchegg
+flatpak install --user https://dl.flathub.org/repo/appstream/com.github.joseexposito.touche.flatpakref -y
 
-sudo apt install flatpak -y
-flatpak install https://dl.flathub.org/repo/appstream/com.github.joseexposito.touche.flatpakref -y
-
-# setup GPU
+# Setup GPU using the recommended driver instead of pinning one version.
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
-sudo apt update
-sudo apt install nvidia-driver-510 -y
+sudo apt-get update
+sudo ubuntu-drivers autoinstall
 
-# setup conda
-sh conda.sh
+# Setup conda.
+/bin/bash "$repo_root/linux/conda.sh"
 
-# stup vim
-sh vim.sh
+# Setup VS Code Insiders.
+/bin/bash "$repo_root/ubuntu/vsc.sh"
 
-# setup vsc
-sh vsc.sh
+# Setup fonts.
+/bin/bash "$repo_root/linux/font.sh"
 
-# setup font
-sh ../general/font.sh
+# Setup pinyin.
+/bin/bash "$repo_root/ubuntu/pinyin.sh"
 
-# setup Oh My Zsh
-sh ../general/zsh.sh
+# Setup Enpass.
+/bin/bash "$repo_root/ubuntu/enpass.sh"
 
-# setup pinyin
-sh pinyin.sh
-
-# setup enpass
-sh enpass.sh
-
-# setup OneDrive
-sh onedrive.sh
-
+# Setup OneDrive.
+/bin/bash "$repo_root/ubuntu/onedrive.sh"
